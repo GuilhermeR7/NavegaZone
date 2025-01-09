@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - NavegaZone</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Imagens/logo.png" alt="Logo NavegaZone" class="logo-img">
+            <h1>NavegaZone</h1>
+        </div>
+    </header>
+
+    <main class="register-container">
+        <h2>Crie sua conta</h2>
+        <form action="/submit-registration" method="POST" class="register-form">
+            <label for="username">Nome de Usuário</label>
+            <input type="text" id="username" name="username" placeholder="Escolha um nome de usuário" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" placeholder="Crie uma senha" required>
+
+            <label for="confirm-password">Confirmar Senha</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Repita sua senha" required>
+
+            <button type="submit" class="register-button">Cadastrar</button>
+        </form>
+
+        <p>Já tem uma conta? <a href="login.html">Faça login aqui</a></p>
+        <button onclick="window.location.href='login.html'" class="login-button">Ir para Login</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 NavegaZone. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
