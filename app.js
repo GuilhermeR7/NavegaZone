@@ -11,7 +11,7 @@ const port = 3000;
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'aluno01',
+    password: 'Gui80120444',
     database: 'NavegaZone'
 });
 
@@ -69,8 +69,10 @@ app.listen(port, () => {
 
 
 // Rota Login
-app.post('/submit-login', (req, res) => {
+app.post('/submit-login', async (req, res) => {
     const { email, senha } = req.body;
+    // Aqui você adiciona a lógica de autenticação do usuário
+    // Suponha que você tenha validado e tenha o `userId`
 
     const query = 'SELECT * FROM Users WHERE email = ?';
     db.query(query, [email], (err, results) => {
@@ -101,6 +103,10 @@ app.post('/submit-login', (req, res) => {
             }
         });
     });
+
+    const userId = // ID do usuário autenticado
+    res.redirect(`/profile/${userId}`);
+    
 });
 
 app.post('/submit-login', async (req, res) => {

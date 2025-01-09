@@ -1,0 +1,38 @@
+-- Criar o banco de dados
+CREATE DATABASE NavegaZone;
+
+-- Usar o banco de dados
+USE NavegaZone;
+
+-- Tabela de Usuários
+CREATE TABLE Users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    photo VARCHAR(255) DEFAULT 'default-photo.jpg',
+    join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_hours_played INT DEFAULT 0,
+    total_points INT DEFAULT 0
+);
+
+-- Tabela de Jogos
+CREATE TABLE Games (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    description TEXT,
+    thumbnail VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabela de Estatísticas de Jogo
+CREATE TABLE GameStats (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    game_id INT NOT NULL,
+    hours_played INT DEFAULT 0,
+    score INT DEFAULT 0,
+    last_played TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    FOREIGN KEY (game_id) REFERENCES Games(id)
+);
