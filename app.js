@@ -33,21 +33,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Rota Cadastro
 app.post('/submit-registration', (req, res) => {
-    const { username, email, password, 'confirm-password': confirmPassword } = req.body;
+    const { username, email, senha, confirmsenha } = req.body;
 
-    if (password !== confirmPassword) {
+    if (senha !== confirmsenha) {
         res.send('As senhas não correspondem.');
         return;
     }
 
-    bcrypt.hash(password, 10, (err, hash) => {
+    bcrypt.hash(senha, 10, (err, hash) => {
         if (err) {
             console.error('Erro ao hash da senha:', err);
             res.send('Erro ao processar a senha.');
             return;
         }
 
-        const query = 'INSERT INTO Users (username, email, password) VALUES (?, ?, ?)';
+        const query = 'INSERT INTO Users (username, email, senha) VALUES (?, ?, ?)';
         db.query(query, [username, email, hash], (err, results) => {
             if (err) {
                 console.error('Erro ao cadastrar usuário:', err);
@@ -70,7 +70,7 @@ app.listen(port, () => {
 
 // Rota Login
 app.post('/submit-login', (req, res) => {
-    const { email, password } = req.body;
+    const { email, senha } = req.body;
 
     const query = 'SELECT * FROM Users WHERE email = ?';
     db.query(query, [email], (err, results) => {
@@ -86,7 +86,7 @@ app.post('/submit-login', (req, res) => {
         }
 
         const user = results[0];
-        bcrypt.compare(password, user.password, (err, isMatch) => {
+        bcrypt.compare(senha, user.senha, (err, isMatch) => {
             if (err) {
                 console.error('Erro ao comparar senha:', err);
                 res.send('Erro ao fazer login.');
@@ -103,28 +103,11 @@ app.post('/submit-login', (req, res) => {
     });
 });
 
-
-
-// Rota Perfil
-app.get('/profile/:id', (req, res) => {
-    const userId = req.params.id;
-
-    const query = 'SELECT * FROM Users WHERE id = ?';
-    db.query(query, [userId], (err, results) => {
-        if (err) {
-            console.error('Erro ao buscar perfil do usuário:', err);
-            res.send('Erro ao carregar o perfil do usuário.');
-            return;
-        }
-
-        if (results.length === 0) {
-            res.send('Usuário não encontrado.');
-            return;
-        }
-
-        const user = results[0];
-        // Renderizar a página de perfil com os dados do usuário
-        res.render('profile', { user });
-    });
+app.post('/submit-login', async (req, res) => {
+    const { email, senha } = req.body;
+    // Aqui você adiciona a lógica de autenticação do usuário
+    // Suponha que você tenha validado e tenha o `userId`
+    
+    const userId = // ID do usuário autenticado
+    res.redirect(`/profile/${userId}`);
 });
-
