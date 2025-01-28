@@ -1,43 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - NavegaZone</title>
-    <link rel="stylesheet" href="estilos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro ou Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    form {
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 400px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .message {
+      margin-top: 20px;
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="Imagens/logo.png" alt="Logo NavegaZone" class="logo-img">
-            <h1>NavegaZone</h1>
-        </div>
-    </header>
+  <h1>Cadastro ou Login</h1>
 
-    <main class="register-container">
-        <h2>Crie sua conta</h2>
-        <form action="/submit-registration" method="POST" class="register-form">
-            <label for="username">Nome de Usuário</label>
-            <input type="text" id="username" name="username" placeholder="Escolha um nome de usuário" required>
+  <!-- Formulário de Cadastro -->
+  <form id="registerForm">
+    <h2>Cadastro</h2>
+    <input type="text" id="registerUsername" placeholder="Nome de Usuário" required />
+    <input type="email" id="registerEmail" placeholder="E-mail" required />
+    <input type="password" id="registerPassword" placeholder="Senha" required />
+    <button type="submit">Cadastrar</button>
+  </form>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+  <!-- Formulário de Login -->
+  <form id="loginForm">
+    <h2>Login</h2>
+    <input type="text" id="loginUsername" placeholder="Nome de Usuário" required />
+    <input type="password" id="loginPassword" placeholder="Senha" required />
+    <button type="submit">Entrar</button>
+  </form>
 
-            <label for="password">Senha</label>
-            <input type="password" id="password" name="senha" placeholder="Crie uma senha" required>
+  <div class="message" id="message"></div>
 
-            <label for="confirm-senha">Confirmar Senha</label>
-            <input type="password" id="confirm-password" name="confirmsenha" placeholder="Repita sua senha" required>
+  <script>
+    // Manipulação do LocalStorage para armazenar usuários
+    const registerForm = document.getElementById("registerForm");
+    const loginForm = document.getElementById("loginForm");
+    const messageDiv = document.getElementById("message");
 
-            <button type="submit" class="register-button">Cadastrar</button>
-        </form>
+    // Função para validar o e-mail
+    function isValidEmail(email) {
+      const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      return regex.test(email);
+    }
 
-        <p>Já tem uma conta? <a href="login.html">Faça login aqui</a></p>
-        <button onclick="window.location.href='login.html'" class="login-button">Ir para Login</button>
-    </main>
+    // Evento de Cadastro
+    registerForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const username = document.getElementById("registerUsername").value;
+      const email = document.getElementById("registerEmail").value;
+      const password = document.getElementById("registerPassword").value;
 
-    <footer>
-        <p>&copy; 2025 NavegaZone. Todos os direitos reservados.</p>
-    </footer>
+      // Verifica se o e-mail é válido
+      if (!isValidEmail(email)) {
+        messageDiv.textContent = "E-mail inválido!";
+        messageDiv.className = "error";
+        return;
+      }
+
+      // Verifica se o usuário já está cadastrado
+      if (localStorage.getItem(username)) {
+        messageDiv.textContent = "Usuário já cadastrado!";
+        messageDiv.className = "error";
+      } else {
+        // Armazena o usuário no LocalStorage
+        const user = { username, email, password };
+        localStorage.setItem(username, JSON.stringify(user));
+        messageDiv.textContent = "Cadastro realizado com sucesso!";
+        messageDiv.className = "message";
+      }
+      registerForm.reset();
+    });
+
+    // Evento de Login
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const username = document.getElementById("loginUsername").value;
+      const password = document.getElementById("loginPassword").value();
+
+      const storedUser = JSON.parse(localStorage.getItem(username));
+
+      // Verifica se o usuário existe e se a senha está correta
+      if (storedUser && storedUser.password === password) {
+        messageDiv.textContent = `Bem-vindo, ${username}!`;
+        messageDiv.className = "message";
+      } else {
+        messageDiv.textContent = "Usuário ou senha incorretos!";
+        messageDiv.className = "error";
+      }
+      loginForm.reset();
+    });
+  </script>
 </body>
 </html>

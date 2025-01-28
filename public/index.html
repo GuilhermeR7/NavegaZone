@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NavegaZone</title>
+    <meta name="description" content="NavegaZone - Explore jogos educativos e divertidos!">
+    <meta name="author" content="NavegaZone">
+    <title>NavegaZone - Explore Jogos Educativos</title>
+
+    <!-- Link para o estilo CSS -->
     <link rel="stylesheet" href="estilos.css">
+
+    <!-- Favicon para a aba do navegador -->
     <link rel="icon" href="favicon.ico">
+
+    <!-- Meta Tags para SEO e responsividade -->
+    <meta name="robots" content="index, follow">
 </head>
 <body>
+    <!-- Cabeçalho -->
     <header>
         <div class="logo">
             <img src="Imagens/logo.png" alt="Logo NavegaZone" class="logo-img">
@@ -18,60 +28,66 @@
                 <li><a href="#home">Início</a></li>
                 <li><a href="#games">Jogos</a></li>
                 <li><a href="#about">Sobre</a></li>
-                <li>
-                    <!-- Botão interligado ao cadastro -->
-                    <a href="cadastro.html" class="login">Entrar</a>
-                </li>
+                <li><a href="cadastro.html" class="login">Entrar</a></li>
             </ul>
         </nav>
     </header>
-    
 
+    <!-- Corpo da Página -->
     <main>
+        <!-- Seção Hero - Introdução ao site -->
         <section id="home" class="hero">
             <h2>Explore e Jogue Jogos Únicos!</h2>
             <p>Descubra jogos e aprenda enquanto se diverte!</p>
             <a href="#games" class="cta">Comece a Jogar</a>
         </section>
 
+        <!-- Seção de Jogos -->
         <section id="games" class="games-list">
             <h2>Jogos em Destaque</h2>
             <div class="games-scroll">
+                <!-- Jogo 1 -->
                 <div class="game-card">
-                    <img src="Imagens/Quiz.png" alt="Jogo 1">
+                    <img src="Imagens/Quiz.png" alt="Jogo Quiz Dia D" class="game-img">
                     <h3>Quiz Dia D</h3>
                     <p>Complete este quiz sobre a história do Dia D! Será que consegue?</p>
                     <a href="quizDiaD.html" class="play-button">Jogar</a>
                 </div>
+                <!-- Jogo 2 (Em desenvolvimento) -->
                 <div class="game-card">
-                    <img src="game2-thumbnail.jpg" alt="Jogo 2">
+                    <img src="game2-thumbnail.jpg" alt="Jogo em Desenvolvimento" class="game-img">
                     <h3>Ainda em desenvolvimento</h3>
                     <p>Volte outro dia.</p>
-                    <a href="game2.html" class="play-button">Jogar</a>
+                    <a href="game2.html" class="play-button disabled">Jogar</a>
                 </div>
+                <!-- Jogo 3 (Em desenvolvimento) -->
                 <div class="game-card">
-                    <img src="game3-thumbnail.jpg" alt="Jogo 3">
+                    <img src="game3-thumbnail.jpg" alt="Jogo em Desenvolvimento" class="game-img">
                     <h3>Ainda em desenvolvimento</h3>
                     <p>Volte outro dia.</p>
-                    <a href="game3.html" class="play-button">Jogar</a>
+                    <a href="game3.html" class="play-button disabled">Jogar</a>
                 </div>
-                <!-- Adicione mais jogos aqui -->
             </div>
         </section>
 
+        <!-- Seção Sobre -->
         <section id="about" class="about">
             <h2>Sobre NavegaZone</h2>
-            <p>O NavegaZone é uma plataforma dedicada a reunir os melhores jogos de navegador em um único lugar. Aqui, você pode se divertir e aprender ao mesmo tempo, explorando experiências criativas e educativas projetadas para todas as idades..</p>
+            <p>O NavegaZone é uma plataforma dedicada a reunir os melhores jogos de navegador em um único lugar. Aqui, você pode se divertir e aprender ao mesmo tempo, explorando experiências criativas e educativas projetadas para todas as idades.</p>
         </section>
     </main>
 
+    <!-- Rodapé -->
     <footer>
         <p>&copy; 2024 NavegaZone. Todos os direitos reservados.</p>
         <ul class="social-links">
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Instagram</a></li>
+            <li><a href="#" target="_blank">Twitter</a></li>
+            <li><a href="#" target="_blank">Facebook</a></li>
+            <li><a href="#" target="_blank">Instagram</a></li>
         </ul>
     </footer>
+
+    <!-- Scripts JS podem ser incluídos ao final para melhorar a performance -->
+    <script src="scripts.js"></script>
 </body>
 </html>

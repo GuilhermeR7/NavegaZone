@@ -1,80 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Dia D</title>
-    <link rel="stylesheet" href="estilos.css">
+    <meta name="description" content="Teste seus conhecimentos sobre o Dia D com nosso quiz educativo!">
+    <meta name="author" content="NavegaZone">
+    <title>Quiz do Dia D</title>
+
+    <!-- Link para o arquivo de estilo específico do quiz -->
+    <link rel="stylesheet" href="quiz.css">
 </head>
 <body>
+    <!-- Cabeçalho -->
     <header>
         <div class="logo">
             <img src="Imagens/logo.png" alt="Logo NavegaZone" class="logo-img">
-            <h1>Quiz Dia D</h1>
+            <h1>NavegaZone</h1>
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="games.html">Jogos</a></li>
-                <li><a href="about.html">Sobre</a></li>
+                <li><a href="index.html">Voltar</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section class="quiz-intro">
-            <h2>Bem-vindo ao Quiz sobre o Dia D!</h2>
-            <p>Teste seus conhecimentos sobre a história do Dia D. Escolha a resposta correta para cada pergunta e veja como você se sai!</p>
+    <!-- Conteúdo do Quiz -->
+    <div class="quiz-container">
+        <section id="quiz">
+            <div class="question" id="question"></div>
+            <ul class="options" id="options"></ul>
+            <div class="feedback" id="feedback"></div>
+            <button class="next-button" id="nextButton" aria-label="Ir para a próxima pergunta">Próxima</button>
         </section>
+    </div>
 
-        <section class="quiz-section">
-            <form id="quiz-form">
-                <div class="question">
-                    <h3>Pergunta 1: Em que data ocorreu o Dia D?</h3>
-                    <label>
-                        <input type="radio" name="q1" value="6 de junho de 1944">
-                        6 de junho de 1944
-                    </label>
-                    <label>
-                        <input type="radio" name="q1" value="7 de julho de 1943">
-                        7 de julho de 1943
-                    </label>
-                    <label>
-                        <input type="radio" name="q1" value="15 de agosto de 1945">
-                        15 de agosto de 1945
-                    </label>
-                </div>
-
-                <div class="question">
-                    <h3>Pergunta 2: Qual foi o nome da operação do Dia D?</h3>
-                    <label>
-                        <input type="radio" name="q2" value="Operação Overlord">
-                        Operação Overlord
-                    </label>
-                    <label>
-                        <input type="radio" name="q2" value="Operação Neptune">
-                        Operação Neptune
-                    </label>
-                    <label>
-                        <input type="radio" name="q2" value="Operação Market Garden">
-                        Operação Market Garden
-                    </label>
-                </div>
-
-                <!-- Adicione mais perguntas aqui -->
-
-                <button type="submit" class="submit-button">Enviar Respostas</button>
-            </form>
-        </section>
-    </main>
-
+    <!-- Rodapé -->
     <footer>
         <p>&copy; 2024 NavegaZone. Todos os direitos reservados.</p>
         <ul class="social-links">
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Instagram</a></li>
+            <li><a href="#" target="_blank">Twitter</a></li>
+            <li><a href="#" target="_blank">Facebook</a></li>
+            <li><a href="#" target="_blank">Instagram</a></li>
         </ul>
     </footer>
+
+    <script>
+        const questions = [
+            { question: "Em que ano ocorreu o Dia D?", options: ["1942", "1943", "1944", "1945"], correct: 2 },
+            { question: "Qual foi o principal objetivo do Dia D?", options: ["Resgatar reféns", "Invadir a Normandia e combater as forças nazistas", "Destruir fábricas de armas", "Capturar líderes nazistas"], correct: 1 },
+            { question: "Qual foi o codinome da operação do Dia D?", options: ["Operação Overlord", "Operação Red Wings", "Operação Barbarossa", "Operação Torch"], correct: 0 },
+            { question: "Quantas praias foram designadas para o desembarque do Dia D?", options: ["3", "4", "5", "6"], correct: 2 },
+            { question: "Qual país liderou o ataque na praia de Omaha?", options: ["Estados Unidos", "Reino Unido", "Canadá", "França"], correct: 0 },
+            { question: "Que tipo de obstáculos os soldados encontraram nas praias?", options: ["Minas terrestres e arame farpado", "Fossos e pântanos", "Torres de vigilância", "Muros altos"], correct: 0 },
+            { question: "Quem era o comandante supremo aliado na operação do Dia D?", options: ["Dwight D. Eisenhower", "George S. Patton", "Winston Churchill", "Bernard Montgomery"], correct: 0 },
+            { question: "Qual era o objetivo da resistência francesa durante o Dia D?", options: ["Sabotar linhas de suprimento nazistas", "Atacar diretamente os soldados nazistas", "Capturar oficiais nazistas", "Fornecer comida para os aliados"], correct: 0 },
+            { question: "Quantos países participaram da invasão do Dia D?", options: ["2", "3", "4", "5 ou mais"], correct: 3 },
+            { question: "Qual era o nome de código da praia invadida pelos canadenses?", options: ["Juno", "Sword", "Gold", "Omaha"], correct: 0 },
+            { question: "Qual das seguintes foi uma das principais dificuldades enfrentadas pelos soldados?", options: ["Falta de suprimentos", "Clima adverso e forte defesa nazista", "Desconhecimento do território", "Baixa moral"], correct: 1 },
+            { question: "Qual foi a duração da Batalha da Normandia após o Dia D?", options: ["1 semana", "1 mês", "2 meses", "3 meses"], correct: 2 },
+            { question: "Quem era o líder da Alemanha durante o Dia D?", options: ["Adolf Hitler", "Erwin Rommel", "Joseph Goebbels", "Hermann Göring"], correct: 0 },
+            { question: "Quantos soldados aliados desembarcaram no Dia D?", options: ["Cerca de 100.000", "Cerca de 150.000", "Cerca de 200.000", "Cerca de 300.000"], correct: 1 }
+        ];
+
+        let currentQuestion = 0;
+        let correctAnswers = 0;
+
+        const quizContainer = document.getElementById("quiz");
+        const questionElement = document.getElementById("question");
+        const optionsElement = document.getElementById("options");
+        const feedbackElement = document.getElementById("feedback");
+        const nextButton = document.getElementById("nextButton");
+
+        function loadQuestion() {
+            feedbackElement.textContent = "";
+            nextButton.style.display = "none";
+
+            const current = questions[currentQuestion];
+            questionElement.textContent = current.question;
+            optionsElement.innerHTML = "";
+
+            current.options.forEach((option, index) => {
+                let li = document.createElement("li");
+                li.innerHTML = `<label><input type="radio" name="option" value="${index}" aria-label="Opção ${option}"> ${option}</label>`;
+                optionsElement.appendChild(li);
+            });
+        }
+
+        function checkAnswer() {
+            const selectedOption = document.querySelector('input[name="option"]:checked');
+            if (!selectedOption) {
+                alert("Por favor, selecione uma resposta!");
+                return;
+            }
+
+            const answer = parseInt(selectedOption.value);
+            feedbackElement.textContent = answer === questions[currentQuestion].correct ? "Correto!" : "Errado!";
+            feedbackElement.style.color = answer === questions[currentQuestion].correct ? "green" : "red";
+            if (answer === questions[currentQuestion].correct) correctAnswers++;
+
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    loadQuestion();
+                } else {
+                    showResults();
+                }
+            }, 2000);
+        }
+
+        function showResults() {
+            const totalQuestions = questions.length;
+            const wrongAnswers = totalQuestions - correctAnswers;
+            const score = correctAnswers * 500;
+
+            quizContainer.innerHTML = `
+                <div class="results">
+                    <h2>Resultados do Quiz</h2>
+                    <p>Respostas corretas: ${correctAnswers}</p>
+                    <p>Respostas erradas: ${wrongAnswers}</p>
+                    <p>Pontuação final: ${score}</p>
+                </div>
+            `;
+        }
+
+        optionsElement.addEventListener("change", () => {
+            nextButton.style.display = "block";
+        });
+
+        nextButton.addEventListener("click", checkAnswer);
+
+        loadQuestion();
+    </script>
 </body>
 </html>

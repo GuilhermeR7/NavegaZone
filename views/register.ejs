@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Cadastro e Login</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="icon" href="/Imagens/favicon.ico">
+</head>
+<body>
+  <%- include('layout') %>
+
+  <main>
+    <h1>Sistema de Cadastro e Login</h1>
+
+    <!-- Formulário de Cadastro -->
+    <form id="registerForm" action="/register" method="POST" enctype="multipart/form-data">
+      <h2>Cadastro</h2>
+      <input type="text" name="username" placeholder="Nome de Usuário" required />
+      <input type="email" name="email" placeholder="E-mail" required />
+      <input type="password" name="password" placeholder="Senha" required />
+      <input type="file" name="photo" />
+      <button type="submit">Cadastrar</button>
+    </form>
+
+    <!-- Exibir mensagens -->
+    <% if (message) { %>
+      <div class="message <%= message.type %>"><%= message.text %></div>
+    <% } %>
+  </main>
+
+  <script src="/js/validacao.js"></script>
+</body>
+</html>

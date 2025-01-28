@@ -1,0 +1,43 @@
+<!-- views/layout.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || 'NavegaZone' %></title>
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="icon" href="/favicon.ico">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/Imagens/logo.png" alt="Logo NavegaZone" class="logo-img">
+            <h1>NavegaZone</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#games">Jogos</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li>
+                    <!-- Botão interligado ao cadastro -->
+                    <a href="/cadastro" class="login">Entrar</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <%- body %> <!-- Aqui será injetado o conteúdo das outras páginas -->
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NavegaZone. Todos os direitos reservados.</p>
+        <ul class="social-links">
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

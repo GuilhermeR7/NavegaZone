@@ -1,8 +1,9 @@
-
+/* Reset de box-sizing para consistência */
+* {
+    box-sizing: border-box;
+}
 
 /* Estilos Principal----------------------------------------------------------------------------------------------------------------------*/
-
-
 
 body {
     font-family: Arial, sans-serif;
@@ -190,6 +191,7 @@ footer .social-links li a {
 footer .social-links li a:hover {
     color: #ffaa00;
 }
+
 .logo {
     display: flex;
     align-items: center;
@@ -212,7 +214,6 @@ footer .social-links li a:hover {
     font-size: 2rem;
     color: #333;
 }
-
 
 .game-card {
     display: inline-block;
@@ -266,13 +267,7 @@ footer .social-links li a:hover {
     background-color: #ffaa00;
 }
 
-
-
-
-
 /* Cadastro Estilos----------------------------------------------------------------------------------------------------------------------*/
-
-
 
 .register-container {
     max-width: 400px;
@@ -310,8 +305,8 @@ footer .social-links li a:hover {
     font-size: 1rem;
 }
 
-.register-button {
-    padding: 0.7rem;
+.button {
+    padding: 0.7rem 1.5rem;
     background-color: #333;
     color: #fff;
     border: none;
@@ -321,7 +316,7 @@ footer .social-links li a:hover {
     transition: background-color 0.3s;
 }
 
-.register-button:hover {
+.button:hover {
     background-color: #444;
 }
 
@@ -341,11 +336,7 @@ footer .social-links li a:hover {
     color: #ffaa00;
 }
 
-
-
 /* Login----------------------------------------------------------------------------------------------------------------------*/
-
-
 
 .login-button, .register-button {
     margin-top: 1rem;
@@ -431,82 +422,7 @@ footer .social-links li a:hover {
     color: #ffaa00;
 }
 
-
-
-/* Quiz----------------------------------------------------------------------------------------------------------------------*/
-
-
-
-.quiz-intro {
-    text-align: center;
-    padding: 2rem;
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #ddd;
-}
-
-.quiz-intro h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-.quiz-intro p {
-    font-size: 1.2rem;
-    color: #555;
-}
-
-
-.quiz-section {
-    padding: 2rem;
-    background-color: #fff;
-}
-
-.question {
-    margin-bottom: 1.5rem;
-}
-
-.question h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.question label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    color: #555;
-    cursor: pointer;
-}
-
-input[type="radio"] {
-    margin-right: 10px;
-}
-
-
-.submit-button {
-    display: block;
-    margin: 1rem auto;
-    padding: 0.8rem 1.5rem;
-    background-color: #ffcc00;
-    color: #000;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-align: center;
-}
-
-.submit-button:hover {
-    background-color: #ffaa00;
-}
-
-
-
 /* Perfil----------------------------------------------------------------------------------------------------------------------*/
-
-
 
 /* Estilo para o container de perfil */
 .profile-container {
@@ -548,4 +464,16 @@ footer {
     background-color: #222;
     color: #fff;
     margin-top: 2rem;
+}
+
+/* Responsividade - Ajustes para telas menores */
+@media (max-width: 768px) {
+    .games-scroll {
+        flex-direction: column;
+    }
+
+    .game-card {
+        width: 100%;
+        margin: 1rem 0;
+    }
 }

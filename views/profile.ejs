@@ -1,0 +1,28 @@
+<!-- views/profile.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil de <%= user.username %></title>
+  <link rel="stylesheet" href="/css/style.css"> <!-- Arquivo CSS -->
+</head>
+<body>
+  <header>
+    <h1>Bem-vindo, <%= user.username %>!</h1>
+  </header>
+
+  <section>
+    <img src="<%= user.photo %>" alt="Foto de perfil" width="150">
+    <p>Email: <%= user.email %></p>
+    <p>Data de Cadastro: <%= user.join_date %></p>
+    <form action="/logout" method="POST">
+      <button type="submit">Logout</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 NavegaZone</p>
+  </footer>
+</body>
+</html>
